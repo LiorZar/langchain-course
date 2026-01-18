@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 
 load_dotenv()
 
@@ -21,6 +22,7 @@ Born in the German Empire, Einstein moved to Switzerland in 1895, forsaking his 
     )
 
     llm = ChatOpenAI(model="gpt-5", temperature=0)
+    # llm = ChatOllama(model="gemma3:270m", temperature=0)
     chain = prompt | llm
     summary = chain.invoke({"info": info})
     # print("Summary:")
